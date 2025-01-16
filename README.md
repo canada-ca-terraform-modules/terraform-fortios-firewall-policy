@@ -30,7 +30,7 @@ No modules.
 | <a name="input_after_policy_id"></a> [after\_policy\_id](#input\_after\_policy\_id) | New policy will be placed AFTER this Policy ID# | `number` | `null` | no |
 | <a name="input_before_policy_id"></a> [before\_policy\_id](#input\_before\_policy\_id) | New policy will be placed BEFORE this Policy ID# | `number` | `null` | no |
 | <a name="input_destination_interface"></a> [destination\_interface](#input\_destination\_interface) | Destination (output) interface | `any` | n/a | yes |
-| <a name="input_policies"></a> [policies](#input\_policies) | List of firewall policies | <pre>map(object({<br/>    comments     = optional(string)<br/>    sources      = list(string)<br/>    destinations = list(string)<br/>    services     = list(string)<br/><br/>    action     = optional(string, "accept")<br/>    schedule   = optional(string, "always")<br/>    logtraffic = optional(string, "all")<br/>    status     = optional(string, "enable")<br/><br/>    utm_status        = optional(string, "enable")<br/>    ssl_ssh_profile   = optional(string, "certificate-inspection")<br/>    ips_sensor        = optional(string, "default")<br/>    webfilter_profile = optional(string)<br/>    av_profile        = optional(string)<br/>    application_list  = optional(string)<br/><br/>    pool_names = optional(list(string), [])<br/>  }))</pre> | n/a | yes |
+| <a name="input_policies"></a> [policies](#input\_policies) | List of firewall policies | `map(object)` | n/a | yes |
 | <a name="input_pool_names"></a> [pool\_names](#input\_pool\_names) | IP Pools for source NAT | `list(string)` | `[]` | no |
 | <a name="input_source_interface"></a> [source\_interface](#input\_source\_interface) | Source (input) interface | `any` | n/a | yes |
 
