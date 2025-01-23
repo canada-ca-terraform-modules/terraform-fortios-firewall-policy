@@ -1,4 +1,40 @@
 <!-- BEGIN_TF_DOCS -->
+## Usage
+```hcl
+module "project_abc_policies" {
+  source = "https://github.com/canada-ca-terraform-modules/terraform-fortios-firewall-policy"
+  providers = {
+    fortios = fortios.myalias
+  }
+
+  source_interface      = "port1"
+  destination_interface = "port2"
+  before_policy_id      = 555 #this policy will be places before #555 in the overall sequence
+
+  policies = {
+    project_abc_flow_1 = {
+      comments = "flow 1",
+      sources  = ["address_object_name", 
+      module.my_fortios_tf_address_module["address_name"].name #address object defined in the same TF config. You can also just use the name as a string.
+      ],
+      destinations = [
+        "destination_address_object"
+      ],
+      services   = ["HTTPS", "TCP-445"], #These services must either already exist on the firewall, or be configred` in TF. 
+      pool_names = ["my_ip_pool"],
+    },
+    project_abc_flow_2 = {
+      comments = "flow 2",
+      sources  = ["address_object_name_2", 
+      module.my_fortios_tf_address_module["address_name_2"].name
+      ],
+      destinations = [
+        "destination_address_object_2"
+      ],
+      services   = ["HTTPS", "UDP-123"],
+    }
+  }
+```
 ## Requirements
 
 | Name | Version |
